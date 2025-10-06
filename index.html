@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>デュアルタイマー</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="timer-card">
+      <header class="card-header">
+        <div class="header-brand">
+          <img class="app-icon" src="image/timer-icon.jpg" alt="タイマーアイコン" width="72" height="72" />
+          <div>
+            <h1>デュアルタイマー</h1>
+            <p>カウントダウンとストップウォッチを使い分けて、時間管理をスマートに。</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="mode-switch" role="tablist" aria-label="モード切替">
+        <button class="mode-button active" data-mode="countdown" role="tab" aria-selected="true">カウントダウン</button>
+        <button class="mode-button" data-mode="stopwatch" role="tab" aria-selected="false">ストップウォッチ</button>
+      </div>
+
+      <section class="panel" data-panel="countdown" aria-live="polite">
+        <div class="display-block">
+          <div class="display" id="countdown-display" aria-label="残り時間">00:00</div>
+          <p class="display-caption">目標時刻に向けてカウントダウンします。</p>
+        </div>
+
+        <div class="inputs">
+          <label>
+            分
+            <input id="countdown-minutes" type="number" min="0" max="999" value="0" inputmode="numeric" />
+          </label>
+          <label>
+            秒
+            <input id="countdown-seconds" type="number" min="0" max="59" value="0" inputmode="numeric" />
+          </label>
+        </div>
+
+        <div class="controls">
+          <button id="countdown-start">スタート</button>
+          <button id="countdown-pause" disabled>一時停止</button>
+          <button id="countdown-reset" disabled>リセット</button>
+        </div>
+
+        <p class="status" id="countdown-status"></p>
+      </section>
+
+      <section class="panel hidden" data-panel="stopwatch" aria-live="polite">
+        <div class="display-block">
+          <div class="display" id="stopwatch-display" aria-label="経過時間">00:00.00</div>
+          <p class="display-caption">経過時間を細かく計測します。</p>
+        </div>
+
+        <div class="controls">
+          <button id="stopwatch-start">スタート</button>
+          <button id="stopwatch-pause" disabled>一時停止</button>
+          <button id="stopwatch-reset" disabled>リセット</button>
+        </div>
+
+        <p class="status" id="stopwatch-status"></p>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
